@@ -9,7 +9,7 @@ class TransfersManager:
         self.table = database.table('transfers')
         self.local_query = Query()
     
-    def match_model(self, data):
+    def match_model(self, data:dict):
         try:
             model = self.show_model_data()
             if set(data.keys()) != set(model.keys()):
@@ -24,7 +24,7 @@ class TransfersManager:
             print(e)
             return False, e
     
-    def insert(self, data):
+    def insert(self, data:dict):
         try:
             match = self.match_model(data)
             if match:
@@ -45,14 +45,14 @@ class TransfersManager:
             print(e)
             return False, e
     
-    def get_by_date(self, date):
+    def get_by_date(self, date:str):
         try:
             return self.table.search(where('date') == date)
         except Exception as e:
             print(e)
             return False, e
     
-    def get_by_category(self, category):
+    def get_by_category(self, category:str):
         try:
             return self.table.search(where('category') == category)
         except Exception as e:
@@ -86,7 +86,7 @@ class TransfersManager:
     
 
 # Tests
-def tests(data):
+def tests(data:dict):
     manager = TransfersManager()
     print(manager.show_model_data())
     print(manager.insert(data))
@@ -98,8 +98,8 @@ def tests(data):
 
 if __name__ == "__main__":
     tests({
-        'date': '2021-01-01',
-        'value': 100.00,
-        'description': 'Car repair',
+        'date': '30-12-2022',
+        'value': 30.0,
+        'description': 'Online purchase',
         'category': 'Remove'
     })
