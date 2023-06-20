@@ -1,0 +1,38 @@
+Screen{
+    align: center middle;
+}
+
+.main_container{
+    align: center middle;
+    width: 100%;
+    height: 100%;
+    content-align: center middle;
+}
+
+Input{
+    width: 40%;
+    margin: 1 0;
+    border: $primary;
+}
+
+#value{
+    width: 8%;
+}
+#description{
+    width: 40%;
+    height: 10%;
+}
+
+Input.-valid{
+    border: $success 60%;
+    
+}
+Input.-valid:focus {
+    border: $success;
+}
+
+RadioSet {
+    width: 40%;
+    align: center middle;
+    border: $primary;
+}
