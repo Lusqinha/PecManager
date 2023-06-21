@@ -1,12 +1,12 @@
 from tinydb import Query, where
-from database import database
+from database.db_start import Database
 """
     This class is responsible for managing the database of transfers.
 """
 
 class TransfersManager:
     def __init__(self):
-        self.table = database.table('transfers')
+        self.table = Database.table('transfers')
         self.local_query = Query()
     
     def match_model(self, data:dict):
@@ -101,5 +101,5 @@ if __name__ == "__main__":
         'date': '30-12-2022',
         'value': 30.0,
         'description': 'Online purchase',
-        'category': 'Remove'
+        'category': 'saida'
     })
