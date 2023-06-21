@@ -82,7 +82,7 @@ class PecManager(App):
             'category-value' : 'Categoria-Valor',
             'all' : 'Tudo'
         }
-        self.current_method = self.sort_methods[1]
+        self.current_method = self.sort_methods[4]
         self.rows = self.get_rows()
 
         yield Header(show_clock=True)
