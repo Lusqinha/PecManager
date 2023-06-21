@@ -45,10 +45,10 @@ class PecManager(App):
 
     def select_sort_method(self, method: str="date"):
         methods = {
-            'date' : sorted(self.rows[1:], key=lambda x: datetime.strptime(x[0], DATE_FORMAT_PRINT)),
-            'category' : sorted(self.rows[1:], key=lambda x: x[3]),
-            'value' : sorted(self.rows[1:], key=lambda x: x[1]),
-            'category-value' : sorted(self.rows[1:], key=lambda x: (x[3], x[1])),
+            'date' : sorted(self.rows[1:], key=lambda x: datetime.strptime(x[0], DATE_FORMAT_PRINT), reverse=True),
+            'category' : sorted(self.rows[1:], key=lambda x: x[3], reverse=True),
+            'value' : sorted(self.rows[1:], key=lambda x: x[1], reverse=True),
+            'category-value' : sorted(self.rows[1:], key=lambda x: (x[3], x[1]), reverse=True),
             'all' : self.rows[1:]
         }
         
@@ -144,7 +144,7 @@ class PecManager(App):
                 }
                 self.manager.insert(data)
                 self.clear_inputs()
-                self.update_datatable(self.get_curent_method())
+                self.update_datatable(self.current_method)
             except:
                 self.clear_inputs()
 
