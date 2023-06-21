@@ -1,38 +1,35 @@
 Screen{
-    align: center middle;
     width: 100%;
+    height: 100%;
+    
 }
 
 .main_container{
     align: center middle;
-
-    width: 55vw;
-    height: 95%;
       
 }
 .mini_container{ 
     align: center middle;
     height: 20vh;
- 
-    
+    width: 55vw;
 }
 
 .description_container{ 
     align: center middle;
     height: 20vh;
- 
+    width: 55vw;
     
 }
 
 .button_container{
     align: center middle;
-    height: 20vh;
- 
-        
+    height: 18vh;
+    width: 55vw;
 }
 
 Input{
     border: $primary;  
+    
 }
 
 #value{
@@ -60,10 +57,10 @@ RadioSet {
 }
 
 Button{
-    content-align: center middle;
+    content-align-vertical: middle;
     border: $primary;
     width: 40%;
-    height: 40%;
+    height: 35%;
     background: $primary;
     margin: 0 1;
 
