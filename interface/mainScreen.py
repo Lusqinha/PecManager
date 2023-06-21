@@ -49,6 +49,7 @@ class PecManager(App):
             'category' : sorted(self.rows[1:], key=lambda x: x[3]),
             'value' : sorted(self.rows[1:], key=lambda x: x[1]),
             'category-value' : sorted(self.rows[1:], key=lambda x: (x[3], x[1])),
+            'all' : self.rows[1:]
         }
         
         return methods[method]
@@ -58,26 +59,28 @@ class PecManager(App):
         self.datatable.clear()
         
         selected_sort = self.select_sort_method(method)
+        self.update_title(extra=f"Categoria: {self.sort_methods_pt[method]}")
         
-        for row in selected_sort[1:]:
+        for row in selected_sort:
             styled_row = [
                 Text(str(cell), style="bold", justify="right") for cell in row
             ]
             self.datatable.add_row(*styled_row)
 
-    def update_title(self):
-        self.title = f"Gerenciamento de Caixa | R$ {manager.currency:.2f}"
+    def update_title(self, extra:str=""):
+        self.title = f"Gerenciamento de Caixa | R$ {manager.currency:.2f} | {extra}"
 
     def compose(self) -> ComposeResult:
         self.currency = manager.currency
         self.manager = manager
         self.radioset_value = ""
-        self.sort_methods = ['date', 'category', 'value', 'category-value']
+        self.sort_methods = ['date', 'category', 'value', 'category-value', 'all']
         self.sort_methods_pt = {
             'date' : 'Data',
             'category' : 'Categoria',
             'value' : 'Valor',
-            'category-value' : 'Categoria-Valor'
+            'category-value' : 'Categoria-Valor',
+            'all' : 'Tudo'
         }
         self.current_method = self.sort_methods[1]
         self.rows = self.get_rows()
@@ -109,8 +112,8 @@ class PecManager(App):
 
             with TabPane("Relatório", id="relatorio", classes="main_container"):
                 
-                
-                yield Label(f"Filtro: {self.sort_methods_pt[self.current_method]}")
+                self.update_title(extra=f"Categoria: {self.sort_methods_pt[self.current_method]}")   
+            
                 self.datatable = DataTable(zebra_stripes=True)
                 yield self.datatable
                 self.datatable.add_columns(*self.rows[0])
