@@ -5,6 +5,13 @@
 ## Descrição
 O PecManager é um sistema de gerenciamento de caixa, que permite o controle de entrada e saída de valores, assim como a visualização de seu histórico; futuramente irá permitir a geração de relatórios e gráficos para melhor visualização dos dados.
 
+
+## Layout
+
+### Tela de Movimentação
+
+![Tela Inicial](imgs/Screen_01.png)
+
 ## Tecnologias
 
 - [Python](https://www.python.org/)

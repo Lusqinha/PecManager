@@ -16,8 +16,10 @@ class PecuniaryManager(TransfersManager):
             elif transfer['category'] == 'saida':
                 self.currency -= transfer['value']
     
-    def convert_db_to_rows(self):
-        data = self.get_all()
+    def convert_db_to_rows(self, data=None):
+        if data == None:
+            data = self.get_all()
+
         print(data)
         
         ROWS = [
@@ -35,4 +37,3 @@ class PecuniaryManager(TransfersManager):
             ROWS.append(row)
         print(ROWS)
         return ROWS
-
