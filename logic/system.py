@@ -19,6 +19,7 @@ class PecuniaryManager(TransfersManager):
     def convert_db_to_rows(self, data=None):
         if data == None:
             data = self.get_all()
+
         print(data)
         
         ROWS = [

@@ -46,6 +46,7 @@ class PecManager(App):
 
     def select_sort_method(self, method: str="date"):
         methods = {
+
             'date' : sorted(self.rows[1:], key=lambda x: datetime.strptime(x[0], DATE_FORMAT_PRINT), reverse=True),
             'category' : sorted(self.rows[1:], key=lambda x: x[3]),
             'value' : sorted(self.rows[1:], key=lambda x: x[1], reverse=True),
@@ -71,19 +72,22 @@ class PecManager(App):
     def update_title(self, extra:str=""):
         self.title = f"Gerenciamento de Caixa | R$ {manager.currency:.2f} | {extra}"
 
+
     def compose(self) -> ComposeResult:
         self.currency = manager.currency
         self.manager = manager
         self.radioset_value = ""
         self.sort_methods = ['date', 'category', 'value', 'category-value', 'default']
+
         self.sort_methods_pt = {
             'date' : 'Data',
             'category' : 'Categoria',
-            'value' : 'Valor',
+            'value' : 'Valor'
             'category-value' : 'Categoria-Valor',
             'default' : 'Padrão'
         }
         self.current_method = self.sort_methods[4]
+
         self.rows = self.get_rows()
 
         yield Header(show_clock=True)
@@ -146,6 +150,7 @@ class PecManager(App):
                 self.manager.insert(data)
                 self.clear_inputs()
                 self.update_datatable(self.current_method)
+
             except:
                 self.clear_inputs()
 
