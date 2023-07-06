@@ -82,7 +82,7 @@ class PecManager(App):
         self.sort_methods_pt = {
             'date' : 'Data',
             'category' : 'Categoria',
-            'value' : 'Valor'
+            'value' : 'Valor',
             'category-value' : 'Categoria-Valor',
             'default' : 'Padrão'
         }
