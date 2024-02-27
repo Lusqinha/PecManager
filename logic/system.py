@@ -1,39 +1,17 @@
-from database.transfers import TransfersManager
+from controller.manager import TransferManager
 
-class PecuniaryManager(TransfersManager):
+class PecuniaryManager:
     def __init__(self):
-        super().__init__()
-        self.currency = 0
-        self.calculate_currency()
+        self.transfers = TransferManager()
+        self.cashier = 0
         
-    def calculate_currency(self):
-        all_transfers = self.get_all()
-        self.currency = 0
-    
+    def calculate_cashier(self):
+        all_transfers = self.transfers.get_all()
+        self.cashier = 0
+        
         for transfer in all_transfers:
             if transfer['category'] == 'entrada':
-                self.currency += transfer['value']
+                self.cashier += transfer['value']
             elif transfer['category'] == 'saida':
-                self.currency -= transfer['value']
+                self.cashier -= transfer['value']
     
-    def convert_db_to_rows(self, data=None):
-        if data == None:
-            data = self.get_all()
-
-        print(data)
-        
-        ROWS = [
-            ("Data", "Valor", "Descrição", "Categoria"),
-        ]
-        
-        for item in data:
-            row = (
-                item["date"].__str__().replace("-", "/"),
-                item["value"],
-                item["description"],
-                item["category"].__str__().capitalize(),
-            )
-            print(row)
-            ROWS.append(row)
-        print(ROWS)
-        return ROWS
